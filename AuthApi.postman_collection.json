@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "3506d770-1b49-4165-8aa0-5eb887eafeea",
+		"name": "Humble Share",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Stage",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"var token = jsonData.accessToken;",
+									"postman.setEnvironmentVariable(\"token\", token);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"elmuja\",\n    \"password\":\"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"elmuja\",\n    \"email\":\"ivanovic.aleksandar.90@gmail.com\",\n    \"password\":\"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/auth/register-verification?register_code=vo4gyl",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register-verification"
+							],
+							"query": [
+								{
+									"key": "register_code",
+									"value": "vo4gyl"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ivanovic.aleksandar.90@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/auth/reset-password",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recover",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\":\"123456789\",\n    \"code\":\"vfm2d1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/auth/recover",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"recover"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/auth/check-username?username=elmuja",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"check-username"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "elmuja"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\":\"4268c66531c26aff9efce58f4a9971f638e4cdd21607045de10b33651a8abb71\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadAvatar",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "ic_rating_down@3x.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/users/upload-avatar",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"upload-avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/users/me",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":1,\n    \"username\": \"Meowtiz\",\n    \"isAdmin\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/users/update",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserAvatar",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/users/get-avatar",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"get-avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/users/all",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://api.stage.behumbleapp.com/api/users/delete?userId=1",
+							"protocol": "http",
+							"host": [
+								"api",
+								"stage",
+								"behumbleapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
